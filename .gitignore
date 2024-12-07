@@ -1,0 +1,38 @@
+# Node.js 기본 설정
+node_modules/
+/public/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 환경 설정 파일
+.env
+.env.*.local
+
+# 빌드 출력
+dist/
+build/
+.tmp/
+
+# 테스트 및 커버리지
+coverage/
+.nyc_output/
+
+# 운영 관련 파일
+.DS_Store
+*.pid
+*.seed
+*.pid.lock
+
+# IDE 및 에디터 파일
+.idea/
+.vscode/
+*.swp
+*.swo
+*.log
+*.bak
+
+# OS 및 기타
+Thumbs.db
+.DS_Store
+*.log
