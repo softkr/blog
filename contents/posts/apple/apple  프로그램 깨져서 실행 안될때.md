@@ -1,11 +1,10 @@
 ---
 title: 'apple  프로그램 깨져서 실행 안될때'
 description: 'apple 프로그램 깨져서 실행 안될때 해결 방법'
-date: 2024-12-07
-update: 2024-12-07
 tags:
-  - utility
+  - apple
 series: 'apple 프로그램'
+date: 2024-12-07
 ---
 
 # macOS 앱 실행 문제 해결: 인증되지 않은 앱 허용하기
