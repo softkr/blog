@@ -46,5 +46,5 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H softkr.dev >> ~/.ssh/known_hosts
           ls -la ./public  # 빌드 디렉토리 확인
-          ssh ubuntu@softkr.dev "sudo rm -rf -p /softkr/blog/public &&  sudo mkdir -p /softkr/blog/public"  # 서버 디렉토리 확인 및 생성
+          ssh ubuntu@softkr.dev "sudo mkdir -p /softkr/blog/public"  # 서버 디렉토리 확인 및 생성
           scp -r ./public/ ubuntu@softkr.dev:/softkr/blog/public
