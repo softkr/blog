@@ -23,11 +23,11 @@ jobs:
       # 3. Install node packages
       - name: Install node packages
         run: yarn
-        
+
       # 4. Check lint
       - name: Check lint
         run: yarn check:lint
-        
+
       # 5. Check prettier
       - name: Check prettier
         run: yarn check:prettier
@@ -45,4 +45,6 @@ jobs:
           echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H softkr.dev >> ~/.ssh/known_hosts
+          ls -la ./build  # 빌드 디렉토리 확인
+          ssh ubuntu@softkr.dev "mkdir -p /softkr/blog/build"  # 서버 디렉토리 확인 및 생성
           scp -r ./build/ ubuntu@softkr.dev:/softkr/blog/build
