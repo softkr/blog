@@ -13,16 +13,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # 1. Checkout the repository
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4 # 최신 버전 사용
 
       # 2. Setup Node.js
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3 # 최신 버전 사용
         with:
           node-version: '22.12.0' # 최신 LTS 버전 사용
+          cache: 'yarn'
 
       # 3. Cache node modules
       - name: Cache node modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3 # 최신 버전 사용
         with:
           path: ~/.yarn/cache
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -31,7 +32,7 @@ jobs:
 
       # 4. Install node packages
       - name: Install node packages
-        run: yarn
+        run: yarn install --frozen-lockfile
 
       # 5. Check lint
       - name: Check lint
@@ -54,5 +55,4 @@ jobs:
           echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H softkr.dev >> ~/.ssh/known_hosts
-          ls -la ./public  # 빌드 디렉토리 확인
           scp -r ./public/ ubuntu@softkr.dev:/softkr/blog
