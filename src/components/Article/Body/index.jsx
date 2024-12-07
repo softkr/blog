@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"
-import styled from "styled-components"
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
-import useOffsetTop from "hooks/useOffsetTop"
+import useOffsetTop from 'hooks/useOffsetTop';
 
-import Toc from "./Toc"
-import StyledMarkdown from "./StyledMarkdown"
-import PrismTheme from "./PrismTheme"
+import Toc from './Toc';
+import StyledMarkdown from './StyledMarkdown';
+import PrismTheme from './PrismTheme';
 
 const Wrapper = styled.div`
   position: relative;
@@ -14,20 +14,20 @@ const Wrapper = styled.div`
   @media (max-width: 768px) {
     padding: 0 15px;
   }
-`
+`;
 
 const Body = ({ html, hideToc }) => {
-  const [toc, setToc] = useState([])
+  const [toc, setToc] = useState([]);
 
-  const [ref, offsetTop] = useOffsetTop()
+  const [ref, offsetTop] = useOffsetTop();
 
   useEffect(() => {
     setToc(
       Array.from(
-        document.querySelectorAll("#article-body > h2, #article-body > h3")
-      )
-    )
-  }, [])
+        document.querySelectorAll('#article-body > h2, #article-body > h3'),
+      ),
+    );
+  }, []);
 
   return (
     <Wrapper>
@@ -42,7 +42,7 @@ const Body = ({ html, hideToc }) => {
         ref={ref}
       />
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Body
+export default Body;

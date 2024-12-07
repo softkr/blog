@@ -1,11 +1,11 @@
-import React from "react"
-import { useSelector } from "react-redux"
-import Giscus from "@giscus/react"
+import React from 'react';
+import { useSelector } from 'react-redux';
+import Giscus from '@giscus/react';
 
-import { giscus } from "../../../../blog-config"
+import { giscus } from '../../../../blog-config';
 
 const Comment = () => {
-  const { theme } = useSelector(state => state.theme)
+  const { theme } = useSelector((state) => state.theme);
 
   return (
     <Giscus
@@ -19,10 +19,10 @@ const Comment = () => {
       reactionsEnabled={giscus.reactionsEnabled}
       inputPosition={giscus.inputPosition}
       lang={giscus.lang}
-      theme={theme === "light" ? "light" : "dark"}
+      theme={theme === 'light' ? 'light' : 'dark'}
       emitMetadata="0"
     />
-  )
-}
+  );
+};
 
-export default Comment
+export default Comment;

@@ -1,25 +1,25 @@
 export const initialState = {
-  theme: "light",
-}
+  theme: 'light',
+};
 
 // action type 정의
-export const SET_LIGHT = "setLight"
-export const SET_DARK = "setDark"
+export const SET_LIGHT = 'setLight';
+export const SET_DARK = 'setDark';
 
 // action 정의
 export const setLight = {
   type: SET_LIGHT,
   data: {
-    theme: "light",
+    theme: 'light',
   },
-}
+};
 
 export const setDark = {
   type: SET_DARK,
   data: {
-    theme: "dark",
+    theme: 'dark',
   },
-}
+};
 
 // reducer 정의
 const reducer = (state = initialState, action) => {
@@ -27,21 +27,21 @@ const reducer = (state = initialState, action) => {
     case SET_LIGHT: {
       return {
         ...state,
-        theme: "light",
-      }
+        theme: 'light',
+      };
     }
     case SET_DARK: {
       return {
         ...state,
-        theme: "dark",
-      }
+        theme: 'dark',
+      };
     }
     default: {
       return {
         ...state,
-      }
+      };
     }
   }
-}
+};
 
-export default reducer
+export default reducer;

@@ -1,5 +1,5 @@
-import { createGlobalStyle, css } from "styled-components"
-import CommonStyle from "./CommonStyle"
+import { createGlobalStyle, css } from 'styled-components';
+import CommonStyle from './CommonStyle';
 
 const Theme = css`
   /**
@@ -7,8 +7,8 @@ const Theme = css`
    * Based on https://github.com/chriskempson/tomorrow-theme
    * @author Rose Pritchard
    */
-  & code[class*="language-"],
-  & pre[class*="language-"] {
+  & code[class*='language-'],
+  & pre[class*='language-'] {
     background-color: #222222;
   }
 
@@ -85,11 +85,11 @@ const Theme = css`
   .token.inserted {
     color: green;
   }
-`
+`;
 
 const DarkMode = createGlobalStyle`
   ${CommonStyle}
   ${Theme}
-`
+`;
 
-export default DarkMode
+export default DarkMode;

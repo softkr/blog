@@ -59,28 +59,28 @@ git remote add origin https://github.com/{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAM
 
 ```javascript
 module.exports = {
-  title: "MY BLOG",
-  description: "Hello, This is my blog",
-  author: "YOUR NAME",
-  siteUrl: "https://myblog.com",
+  title: 'MY BLOG',
+  description: 'Hello, This is my blog',
+  author: 'YOUR NAME',
+  siteUrl: 'https://myblog.com',
   links: {
-    github: "https://github.com",
-    facebook: "https://www.facebook.com",
-    instagram: "https://www.instagram.com",
-    etc: "https://www.google.com/",
+    github: 'https://github.com',
+    facebook: 'https://www.facebook.com',
+    instagram: 'https://www.instagram.com',
+    etc: 'https://www.google.com/',
   },
   giscus: {
-    repo: "{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAME}",
-    repoId: "{YOUR_GITHUB_REPOSITORY_ID}",
-    category: "{YOUR_GITHUB_REPOSITORY_CATEGORY}",
-    categoryId: "{YOUR_GITHUB_REPOSITORY_CATEGORY_ID}",
-    mapping: "pathname",
-    strict: "0",
-    reactionsEnabled: "1",
-    inputPosition: "bottom",
-    lang: "en",
+    repo: '{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAME}',
+    repoId: '{YOUR_GITHUB_REPOSITORY_ID}',
+    category: '{YOUR_GITHUB_REPOSITORY_CATEGORY}',
+    categoryId: '{YOUR_GITHUB_REPOSITORY_CATEGORY_ID}',
+    mapping: 'pathname',
+    strict: '0',
+    reactionsEnabled: '1',
+    inputPosition: 'bottom',
+    lang: 'en',
   },
-}
+};
 ```
 
 gatsby-starter-hoodie 는 `blog-config.js` 라는 설정 파일을 제공합니다. 이 파일에서 블로그 정보, 작성자 프로필, Giscus 설정 등을 작성할 수 있습니다. 여러분 블로그 설정에 맞게 `blog-config.js` 를 설정하세요.

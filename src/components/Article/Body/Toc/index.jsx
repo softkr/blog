@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react"
-import styled, { css } from "styled-components"
+import React, { useState, useEffect } from 'react';
+import styled, { css } from 'styled-components';
 
-import useScroll from "hooks/useScroll"
+import useScroll from 'hooks/useScroll';
 
-import getElementOffset from "utils/getElmentOffset"
+import getElementOffset from 'utils/getElmentOffset';
 
-import RevealOnScroll from "components/RevealOnScroll"
+import RevealOnScroll from 'components/RevealOnScroll';
 
-const STICK_OFFSET = 100
+const STICK_OFFSET = 100;
 
 const TocWrapper = styled.div`
   position: absolute;
@@ -27,14 +27,14 @@ const TocWrapper = styled.div`
       width: 3px;
     }
     ::-webkit-scrollbar-track {
-      background: ${props => props.theme.colors.scrollTrack};
+      background: ${(props) => props.theme.colors.scrollTrack};
     }
 
     ::-webkit-scrollbar-thumb {
-      background: ${props => props.theme.colors.scrollHandle};
+      background: ${(props) => props.theme.colors.scrollHandle};
     }
 
-    ${props =>
+    ${(props) =>
       props.stick &&
       css`
         position: fixed;
@@ -45,65 +45,65 @@ const TocWrapper = styled.div`
   @media (max-width: 1300px) {
     display: None;
   }
-`
+`;
 
 const ParagraphTitle = styled.div`
   margin-bottom: 8px;
-  padding-left: ${props => (props.subtitle ? 19.2 : 0)}px;
+  padding-left: ${(props) => (props.subtitle ? 19.2 : 0)}px;
   font-size: 14.4px;
-  color: ${props => props.theme.colors.mutedText};
+  color: ${(props) => props.theme.colors.mutedText};
   line-height: 1.3;
   transition: all 0.2s;
 
-  ${props =>
+  ${(props) =>
     props.active &&
     css`
       transform: translate(-10px, 0);
-      color: ${props => props.theme.colors.secondaryText};
+      color: ${(props) => props.theme.colors.secondaryText};
     `}
 
   &:hover {
-    color: ${props => props.theme.colors.text};
+    color: ${(props) => props.theme.colors.text};
     cursor: pointer;
   }
-`
+`;
 
 const Toc = ({ items, articleOffset }) => {
-  const { y } = useScroll()
+  const { y } = useScroll();
 
-  const [revealAt, setRevealAt] = useState(4000)
-  const [headers, setHeaders] = useState([])
-  const [active, setActive] = useState(0)
+  const [revealAt, setRevealAt] = useState(4000);
+  const [headers, setHeaders] = useState([]);
+  const [active, setActive] = useState(0);
 
   useEffect(() => {
-    const bioElm = document.getElementById("bio")
+    const bioElm = document.getElementById('bio');
 
     setRevealAt(
-      getElementOffset(bioElm).top - bioElm.getBoundingClientRect().height
-    )
-  }, [])
+      getElementOffset(bioElm).top - bioElm.getBoundingClientRect().height,
+    );
+  }, []);
 
   useEffect(() => {
     setHeaders(
       [
-        ...document.querySelectorAll("#article-body > h2, #article-body > h3"),
-      ].map(element => getElementOffset(element).top)
-    )
-  }, [])
+        ...document.querySelectorAll('#article-body > h2, #article-body > h3'),
+      ].map((element) => getElementOffset(element).top),
+    );
+  }, []);
 
   useEffect(() => {
     headers.forEach((header, i) => {
       if (header < y + 1) {
-        setActive(i)
-        return
+        setActive(i);
+        return;
       }
-    })
-  }, [y])
+    });
+  }, [y]);
 
-  const handleClickTitle = item => {
-    window.location.hash = null
-    window.location.hash = item.id
-  }
+  const handleClickTitle = (item) => {
+    window.location.hash = null;
+    window.location.hash = item.id;
+  };
 
   return (
     <RevealOnScroll revealAt={revealAt} reverse>
@@ -112,7 +112,7 @@ const Toc = ({ items, articleOffset }) => {
           {items.map((item, i) => (
             <ParagraphTitle
               key={i}
-              subtitle={item.tagName === "H3"}
+              subtitle={item.tagName === 'H3'}
               active={i === active}
               onClick={() => handleClickTitle(item)}
             >
@@ -122,7 +122,7 @@ const Toc = ({ items, articleOffset }) => {
         </div>
       </TocWrapper>
     </RevealOnScroll>
-  )
-}
+  );
+};
 
-export default Toc
+export default Toc;

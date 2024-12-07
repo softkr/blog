@@ -1,11 +1,11 @@
-import React from "react"
-import { navigate } from "gatsby"
-import styled from "styled-components"
-import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
+import React from 'react';
+import { navigate } from 'gatsby';
+import styled from 'styled-components';
+import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 
-import Divider from "components/Divider"
-import Bio from "components/Bio"
-import Comment from "./Comment"
+import Divider from 'components/Divider';
+import Bio from 'components/Bio';
+import Comment from './Comment';
 
 const ArticleButtonContainer = styled.div`
   display: flex;
@@ -21,21 +21,21 @@ const ArticleButtonContainer = styled.div`
       margin-bottom: 12.8px;
     }
   }
-`
+`;
 
 const ArrowFlexWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   white-space: nowrap;
-`
+`;
 
 const ArticleButtonTextWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   flex-direction: column;
   overflow: hidden;
-`
+`;
 
 const Arrow = styled.div`
   position: relative;
@@ -45,66 +45,66 @@ const Arrow = styled.div`
   font-size: 24px;
   flex-basis: 24px;
   transition: left 0.3s;
-`
+`;
 
 const ArticleButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: ${props => (props.right ? "flex-end" : "flex-start")};
+  align-items: ${(props) => (props.right ? 'flex-end' : 'flex-start')};
   padding: 20.8px 16px;
   max-width: 250px;
   flex-basis: 250px;
   font-size: 17.6px;
   border-radius: 5px;
-  background-color: ${props => props.theme.colors.nextPostButtonBackground};
-  color: ${props => props.theme.colors.text};
+  background-color: ${(props) => props.theme.colors.nextPostButtonBackground};
+  color: ${(props) => props.theme.colors.text};
   cursor: pointer;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: ${props =>
+    background-color: ${(props) =>
       props.theme.colors.hoveredNextPostButtonBackground};
   }
 
   & ${ArrowFlexWrapper} {
-    flex-direction: ${props => (props.right ? "row-reverse" : "row")};
+    flex-direction: ${(props) => (props.right ? 'row-reverse' : 'row')};
   }
 
   & ${ArticleButtonTextWrapper} {
-    align-items: ${props => (props.right ? "flex-end" : "flex-start")};
+    align-items: ${(props) => (props.right ? 'flex-end' : 'flex-start')};
   }
 
   & ${Arrow} {
-    ${props => (props.right ? "margin-left: 16px" : "margin-right: 16px")};
+    ${(props) => (props.right ? 'margin-left: 16px' : 'margin-right: 16px')};
   }
 
   &:hover ${Arrow} {
-    left: ${props => (props.right ? 2 : -2)}px;
+    left: ${(props) => (props.right ? 2 : -2)}px;
   }
 
   @media (max-width: 768px) {
     max-width: inherit;
     flex-basis: inherit;
   }
-`
+`;
 
 const ArticleButtonLabel = styled.div`
   margin-bottom: 9.6px;
   font-size: 12.8px;
-`
+`;
 
 const ArticleButtonTitle = styled.div`
   padding: 2px 0;
   width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
-`
+`;
 
 const CommentWrapper = styled.div`
   @media (max-width: 768px) {
     padding: 0 15px;
   }
-`
+`;
 
 const ArticleButton = ({ right, children, onClick }) => {
   return (
@@ -119,8 +119,8 @@ const ArticleButton = ({ right, children, onClick }) => {
         </ArticleButtonTextWrapper>
       </ArrowFlexWrapper>
     </ArticleButtonWrapper>
-  )
-}
+  );
+};
 
 const Footer = ({ previous, next }) => {
   return (
@@ -147,7 +147,7 @@ const Footer = ({ previous, next }) => {
         <Comment />
       </CommentWrapper>
     </>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

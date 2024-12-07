@@ -1,5 +1,5 @@
-import { createGlobalStyle, css } from "styled-components"
-import CommonStyle from "./CommonStyle"
+import { createGlobalStyle, css } from 'styled-components';
+import CommonStyle from './CommonStyle';
 
 const Theme = css`
   /**
@@ -32,23 +32,23 @@ const Theme = css`
   * --syntax-cursor-line: hsla(230, 8%, 24%, 0.05);
   */
 
-  code[class*="language-"],
-  pre[class*="language-"] {
+  code[class*='language-'],
+  pre[class*='language-'] {
     background-color: #f7f6f3;
     color: hsl(230, 8%, 24%);
   }
 
   /* Selection */
-  code[class*="language-"]::-moz-selection,
-  code[class*="language-"] *::-moz-selection,
-  pre[class*="language-"] *::-moz-selection {
+  code[class*='language-']::-moz-selection,
+  code[class*='language-'] *::-moz-selection,
+  pre[class*='language-'] *::-moz-selection {
     background: hsl(230, 1%, 90%);
     color: inherit;
   }
 
-  code[class*="language-"]::selection,
-  code[class*="language-"] *::selection,
-  pre[class*="language-"] *::selection {
+  code[class*='language-']::selection,
+  code[class*='language-'] *::selection,
+  pre[class*='language-'] *::selection {
     background: hsl(230, 1%, 90%);
     color: inherit;
   }
@@ -409,11 +409,11 @@ const Theme = css`
   .prism-previewer-easing.prism-previewer-easing circle {
     fill: transparent;
   }
-`
+`;
 
 const LightMode = createGlobalStyle`
   ${CommonStyle}
   ${Theme}
-`
+`;
 
-export default LightMode
+export default LightMode;
