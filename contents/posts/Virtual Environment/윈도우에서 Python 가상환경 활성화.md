@@ -33,11 +33,14 @@ update: 2024-12-07
 다행히도 이 문제는 간단한 단계를 통해 해결할 수 있습니다.
 
 ### 1단계: PowerShell 관리자 모드로 실행
+
 - Windows 시작 메뉴에서 PowerShell을 검색
 - 마우스 우클릭 후 "관리자 권한으로 실행" 선택
 
 ### 2단계: 실행 정책 변경
+
 관리자 모드의 PowerShell에서 다음 명령어를 실행합니다:
+
 ```powershell
 Set-ExecutionPolicy Unrestricted
 ```
@@ -59,4 +62,5 @@ Set-ExecutionPolicy Unrestricted
 더 자세한 내용이나 다양한 실행 정책 옵션에 대해 알고 싶다면, [Microsoft의 공식 문서](https://go.microsoft.com/fwlink/?LinkID=135170)를 참조하시기 바랍니다.
 
 ---
+
 _이 글은 Python 개발 환경 설정 시리즈의 일부입니다._
