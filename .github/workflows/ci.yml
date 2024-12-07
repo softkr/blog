@@ -9,19 +9,37 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # 1. Checkout the repository
       - uses: actions/checkout@v2
+
+      # 2. Setup Node.js
       - uses: actions/setup-node@v2
         with:
           node-version: 20.3.1
 
+      # 3. Install node packages
       - name: Install node packages
         run: yarn
         
+      # 4. Check lint
       - name: Check lint
         run: yarn check:lint
         
+      # 5. Check prettier
       - name: Check prettier
         run: yarn check:prettier
-      
+
+      # 6. Build the project
       - name: Build
         run: yarn build
+
+      # 7. Deploy to the server
+      - name: Deploy to server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H your.server.com >> ~/.ssh/known_hosts
+          scp -r ./dist/ user@your.server.com:/path/to/deployment
