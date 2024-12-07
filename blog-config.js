@@ -20,10 +20,10 @@ module.exports = {
   useAbout: true,
   // See https://giscus.app/
   giscus: {
-    repo: 'softkr/softkr.dev', // 본인의 GitHub 저장소
-    repoId: 'MDEwOlJlcG9zaXRvcnkzNjk4NjMzNTg=', // 저장소 ID (API 또는 giscus 설정 시 제공)
+    repo: 'softkr/blog', // 본인의 GitHub 저장소
+    repoId: 'R_kgDONaFI4A', // 저장소 ID (API 또는 giscus 설정 시 제공)
     category: 'General', // GitHub Discussions 카테고리 이름
-    categoryId: 'DIC_kwDOFguqvs4ChwGy', // 카테고리 ID
+    categoryId: 'DIC_kwDONaFI4M4Ck_4h', // 카테고리 ID
     mapping: 'pathname', // 페이지 경로 기반 댓글 연결
     strict: '0', // 비엄격 모드
     reactionsEnabled: '1', // 반응 활성화
