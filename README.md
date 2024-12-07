@@ -1,171 +1,60 @@
-<h1 align="center">
-    gatsby-starter-hoodie
-</h1>
+---
+title: "Meet the Creator of softkr.dev"
+---
 
-<h4 align="center">
-  A gatsby starter developed for developers to build tech blogs.
-</h4>
+# About Me
 
-![](mockup.png)
+안녕하세요, 저는 **20년 이상의 개발 경력**을 가진 **소프트웨어 엔지니어**로서, 다양한 기술과 도전을 통해 성장해온 개발자입니다. 현재는 기술 블로그 **[softkr.dev](https://softkr.dev)**를 통해 저의 경험과 통찰을 공유하며, 더 많은 개발자와 함께 배우고 성장하기를 꿈꾸고 있습니다.
 
-> gatsby-starter-hoodie has been migrated to **Gatsby 5** as of 2023-06-30. gatsby-starter-hoodie is now available for **node.js 20**.
+---
 
-## 🚀 About gatsby-starter-hoodie
+## 나의 개발 여정
 
-[한국어 문서 바로가기](https://github.com/devHudi/gatsby-starter-hoodie/blob/main/README-kr.md)
+제 경력은 다양한 산업과 기술 영역을 아우릅니다. 다음은 제가 걸어온 주요 발자취들입니다:
 
-gatsby-starter-hoodie is a gatsby starter created for writing tech blogs. Markdown, Code Highlighting in various programming languages, and Katex syntax are supported. Also, you can easily categorize articles into tags and series.
+- **메타버스 플랫폼 개발 및 설계**  
+  - 메타버스 플랫폼 아키텍처 및 알고리즘 설계  
+  - 메인넷 서버 구축  
+  - NFT 및 암호화폐 지갑 개발  
 
-Start your blog with a neatly designed gatsby-starter-hoodie that supports dark mode.
+- **헬스케어 IoT 개발**  
+  - 임상시험 API 서버 개발  
+  - IoT 서버 및 데이터 분석 시스템 구축  
 
-This project inspired by [velog](https://velog.io).
+- **자동화 및 분산 시스템 설계**  
+  - 쇼핑몰 자동화 시스템  
+  - 면세점 구매 자동화 시스템  
+  - 24시간 독서실 무인 관리 시스템 개발  
 
-## [Live Demo](https://gatsby-starter-hoodie.netlify.app)
+- **AI와 풀스택 개발**  
+  - AI 기반 콘텐츠 개발  
+  - 소켓 서버 구축  
+  - 대규모 시스템의 풀스택 개발  
 
-## Features
+이 외에도 암호화폐 거래소 설계 및 운영, RESTful API 서버 개발, 데이터 분석, 서버 보안 설계 등 폭넓은 프로젝트 경험을 통해 실력을 다졌습니다.
 
-- Markdown
-- Code Highlighting
-- Katex Syntax
-- Dark Mode (Responsive to the settings of the OS)
-- Tag Categoriazation
-- Series Categorization
-- Responsive Web
-- SEO
-- Giscus
+---
 
-Getting started your blog with gatsby-starter-hoodie by following steps below. It's very easy 😉.
+## 나의 신념과 철학
 
-## 1. Create a Gatsby site
+개발은 제게 단순한 직업을 넘어서는 삶의 방식입니다. 저는 문제를 해결하고, 세상을 조금 더 나은 곳으로 만드는 도구로 기술을 활용하고자 노력합니다. 새로운 기술을 배우고, 이를 통해 세상을 변화시키는 데 기여하는 것이 제 열정의 원천입니다.
 
-> Make sure you have **node.js** and **gatsby-cli** installed on your computer.
+---
 
-```
-$ npx gatsby new my-hoodie-blog https://github.com/devHudi/gatsby-starter-hoodie
-```
+## 개인적인 이야기
 
-## 2. Start dev server
+저는 어려운 환경에서 자랐지만, 부모님의 헌신과 사랑 덕분에 긍정적인 삶의 태도를 가지게 되었습니다. 그 경험은 제 성장과 도전에 있어 큰 원동력이 되었고, 책임감 있고 끈기 있는 사람으로 저를 단련시켰습니다.
 
-```
-$ cd my-hoodie-blog
-$ npm run start
-```
+군 복무 중에도 배움에 대한 열정을 놓지 않고 검정고시와 대학 졸업을 이루었으며, 이후 북경에서 다양한 문화와 언어를 익히며 글로벌 감각을 키웠습니다. 이 모든 경험은 제가 새로운 환경에서도 빠르게 적응하고 도전할 수 있는 기반이 되었습니다.
 
-Now you can access to your blog at localhost:8000.
+---
 
-## 3. Create your own Github repository
+## 앞으로의 비전
 
-Giscus comment widget is based on **Github Discuss system**. So you need your own GitHub repository. Also, if you want to publish your blog through Github Pages or Netlify, the Github Repository is a necessary.
+저는 최신 기술 트렌드를 선도하고, 더 나은 솔루션을 제공하며 사회적 가치를 창출하는 데 집중하고자 합니다. 블로그 **[softkr.dev](https://softkr.dev)**를 통해 기술적 통찰과 현실적인 문제 해결 노하우를 나누고, IT 산업의 발전에 기여하는 개발자가 되는 것이 목표입니다.
 
-If you don't know how to create a GitHub repository, follow the [official GitHub documentation](https://docs.github.com/en/github/getting-started-with-github/create-a-repo).
+---
 
-### Add remote repository
+## 연결하기
 
-```
-git remote add origin https://github.com/{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAME}
-```
-
-## 4. Write blog-config.js
-
-```javascript
-module.exports = {
-  title: "MY BLOG",
-  description: "Hello, This is my blog",
-  author: "YOUR NAME",
-  siteUrl: "https://myblog.com",
-  links: {
-    github: "https://github.com",
-    facebook: "https://www.facebook.com",
-    instagram: "https://www.instagram.com",
-    etc: "https://www.google.com/",
-  },
-  giscus: {
-    repo: "{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAME}",
-    repoId: "{YOUR_GITHUB_REPOSITORY_ID}",
-    category: "{YOUR_GITHUB_REPOSITORY_CATEGORY}",
-    categoryId: "{YOUR_GITHUB_REPOSITORY_CATEGORY_ID}",
-    mapping: "pathname",
-    strict: "0",
-    reactionsEnabled: "1",
-    inputPosition: "bottom",
-    lang: "en",
-  },
-}
-```
-
-gatsby-starter-hoodie provides a configuration file called `blog-config.js`. In this file, you can configure blog, biography (profile), and giscus. Configure `blog-config.js` to suit your blog.
-
-## 5. Add your content
-
-Markdown content is in `contents/posts`. You can write and add your articles. [Click here](https://hoodie.gatsbyjs.io/gatsby-starter-hoodie/writing-guide) to see the detail writing guide.
-
-## 6. Deploy your blog
-
-### 6-1 via Netlify
-
-<a href="https://app.netlify.com/start/deploy?repository=https://github.com/alxshelepenok/gatsby-starter-lumen" target="_blank"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
-
-Follow the Connecting to Netlify steps in [A Step-by-Step Guide: Gatsby on Netlify](https://www.netlify.com/blog/2016/02/24/a-step-by-step-guide-gatsby-on-netlify/). It's not difficult.
-
-If you connect the github repository using Netlify, it is automatically distributed whenever you push it, so it is convenient.
-
-### 6-2. via Github Pages
-
-#### Case 1
-
-If the repository name is in the form of `{YOUR_GITHUB_NAME} .github.io`, run it below.
-
-```
-$ npm run deploy-gh
-```
-
-#### Case 2
-
-If the repository name is not in the form of `{YOUR_GITHUB_NAME} .github.io`, run it below.
-
-```
-$ npm run deploy-gh-prefix-paths
-```
-
-In the above case, you need to change `pathPrefix` in `gatsby-config.js` to your repository name.
-
-### 6-3. other platforms
-
-```
-$ npm run build
-```
-
-You can build the gatsby website with the command above. The build output is created in the `/public` directory. Deploy the `/public` directory using the command for the platform you want to deploy.
-
-## 7. Cutomize
-
-### Project Structure
-
-You can customize your own gatsby-starter-hoodie by referring to the following file structure 🙊.
-
-```
-├── node_modules
-├── contents
-│   └── posts // your articles are here
-├── public // build outputs are here
-└── src
-    ├── assets
-    │   └── theme // theme config is here
-    ├── components
-    │   └── Article
-    │       └── Body
-    │           └── StyledMarkdown
-    │               └── index.jsx // markdown styles are here
-    │   ...
-    ├── fonts // webfonts are here
-    ├── hooks
-    ├── images
-    ├── pages // page components are here
-    ├── reducers
-    ├── templates // post components are here
-    └── utils
-```
-
-## Star History 🌟
-
-[![Star History Chart](https://api.star-history.com/svg?repos=devHudi/gatsby-starter-hoodie&type=Date)](https://star-history.com/#devHudi/gatsby-starter-hoodie&Date)
+저의 블로그와 기술 이야기가 도움이 되기를 바라며, 언제든지 의견과 피드백을 나누어 주세요. 함께 배우고 성장하며 더 나은 미래를 만들어나가고 싶습니다.
