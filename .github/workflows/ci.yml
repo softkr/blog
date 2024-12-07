@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -41,5 +41,5 @@ jobs:
           mkdir -p ~/.ssh
           echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H your.server.com >> ~/.ssh/known_hosts
-          scp -r ./dist/ user@your.server.com:/path/to/deployment
+          ssh-keyscan -H softkr.dev >> ~/.ssh/known_hosts
+          scp -r ./build/ ubuntu@softkr.dev:/softkr/blog/build
