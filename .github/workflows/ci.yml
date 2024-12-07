@@ -48,4 +48,4 @@ jobs:
           ls -la ./public  # 빌드 디렉토리 확인
           ssh ubuntu@softkr.dev "sudo rm -rf /softkr/blog/public"  # 서버 디렉토리 삭제
           ssh ubuntu@softkr.dev "sudo mkdir -p /softkr/blog/public"  # 서버 디렉토리 생성
-          scp -r ./public/ ubuntu@softkr.dev:/softkr/blog/public
+          scp -r ./public/ ubuntu@softkr.dev:/softkr/blog/
