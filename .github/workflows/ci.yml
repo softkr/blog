@@ -13,17 +13,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # 1. Checkout the repository
-      - uses: actions/checkout@v4 # 최신 버전 사용
+      - uses: actions/checkout@v4
 
       # 2. Setup Node.js
-      - uses: actions/setup-node@v3 # 최신 버전 사용
+      - uses: actions/setup-node@v3
         with:
-          node-version: '22.12.0' # 최신 LTS 버전 사용
+          node-version: '22.12.0'
           cache: 'yarn'
 
       # 3. Cache node modules
       - name: Cache node modules
-        uses: actions/cache@v3 # 최신 버전 사용
+        uses: actions/cache@v3
         with:
           path: ~/.yarn/cache
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -42,11 +42,22 @@ jobs:
       - name: Check prettier
         run: yarn check:prettier
 
-      # 7. Build the project
+      # 7. Format with Prettier and commit changes if any
+      - name: Format with Prettier
+        run: yarn prettier --write .
+      
+      - name: Commit changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "Format code with Prettier" || echo "No changes to commit"
+
+      # 8. Build the project
       - name: Build
         run: yarn build
 
-      # 8. Deploy to the server
+      # 9. Deploy to the server
       - name: Deploy to server
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
