@@ -57,3 +57,14 @@ jobs:
       # 9. Build the project
       - name: Build
         run: yarn build
+
+      # 10. Deploy to server
+      - name: Deploy to server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H softkr.dev >> ~/.ssh/known_hosts
+          scp -r ./public/ ubuntu@softkr.dev:/softkr/blog
