@@ -1,3 +1,14 @@
+---
+title: 'AWS EC2를 통해 RDS SSH 터널링 설정 가이드'
+description: 'AWS EC2 서버를 통해 RDS 데이터베이스에 접속하고, 로컬에서 안전하게 접근할 수 있도록 SSH 터널링을 설정하는 방법을 설명합니다.'
+tags:
+   - AWS
+   - EC2
+   - RDS
+   - SSH
+series: 'AWS 시리즈'
+date: 2024-12-18
+---
 
 # AWS EC2를 통해 RDS SSH 터널링 설정 가이드
 
@@ -7,17 +18,17 @@
 
 ## 사전 준비
 1. **EC2 서버 정보**:
-   - 공용 IP (예: `54.123.45.67`)
-   - SSH 키 파일 (예: `aws-key.pem`)
-   - 사용자 (`ec2-user`, `ubuntu` 등)
+    - 공용 IP (예: `54.123.45.67`)
+    - SSH 키 파일 (예: `aws-key.pem`)
+    - 사용자 (`ec2-user`, `ubuntu` 등)
 
 2. **RDS 정보**:
-   - 엔드포인트 (예: `mydb.xxxxx.us-east-1.rds.amazonaws.com`)
-   - 포트 (`3306`은 MySQL, `5432`는 PostgreSQL)
-   - 데이터베이스 사용자명 및 비밀번호
+    - 엔드포인트 (예: `mydb.xxxxx.us-east-1.rds.amazonaws.com`)
+    - 포트 (`3306`은 MySQL, `5432`는 PostgreSQL)
+    - 데이터베이스 사용자명 및 비밀번호
 
 3. **로컬 머신**:
-   - 터널링에 사용할 로컬 포트 (예: `3306`)
+    - 터널링에 사용할 로컬 포트 (예: `3306`)
 
 ---
 
@@ -97,10 +108,10 @@ psql -h 127.0.0.1 -p 3306 -U <db_user> <db_name>
 `~/.ssh/config` 파일에 아래 내용을 추가:
 ```plaintext
 Host aws-ec2
-    HostName 54.123.45.67
-    User ec2-user
-    IdentityFile /path/to/aws-key.pem
-    LocalForward 3306 mydb.xxxxx.us-east-1.rds.amazonaws.com:3306
+      HostName 54.123.45.67
+      User ec2-user
+      IdentityFile /path/to/aws-key.pem
+      LocalForward 3306 mydb.xxxxx.us-east-1.rds.amazonaws.com:3306
 ```
 
 ### 실행:
@@ -116,46 +127,46 @@ ssh aws-ec2
 - RDS 보안 그룹이 EC2 서버의 프라이빗 IP를 허용하지 않을 수 있음.
 #### 해결:
 - RDS 보안 그룹에 아래와 같은 인바운드 규칙 추가:
-  - **타입**: MySQL/Aurora 또는 PostgreSQL
-  - **프로토콜**: TCP
-  - **포트 범위**: `3306` (또는 `5432`)
-  - **소스**: EC2 프라이빗 IP (예: `172.31.0.5/32`)
+   - **타입**: MySQL/Aurora 또는 PostgreSQL
+   - **프로토콜**: TCP
+   - **포트 범위**: `3306` (또는 `5432`)
+   - **소스**: EC2 프라이빗 IP (예: `172.31.0.5/32`)
 
 ### 문제 2: 로컬에서 RDS 연결 실패
 #### 원인:
 - SSH 터널링이 제대로 설정되지 않음.
 #### 해결:
 - 터널링 상태 확인:
-  ```bash
-  netstat -an | grep 3306
-  ```
+   ```bash
+   netstat -an | grep 3306
+   ```
 - 다른 포트를 사용해 충돌 방지:
-  ```bash
-  ssh -i aws-key.pem -L 3307:mydb.xxxxx.us-east-1.rds.amazonaws.com:3306 ec2-user@54.123.45.67
-  ```
+   ```bash
+   ssh -i aws-key.pem -L 3307:mydb.xxxxx.us-east-1.rds.amazonaws.com:3306 ec2-user@54.123.45.67
+   ```
 
 ---
 
 ## 요약
 1. **EC2에 SSH 접속**:
-   ```bash
-   ssh -i aws-key.pem ec2-user@54.123.45.67
-   ```
+    ```bash
+    ssh -i aws-key.pem ec2-user@54.123.45.67
+    ```
 
 2. **EC2에서 RDS 연결 테스트**:
-   ```bash
-   mysql -h mydb.xxxxx.us-east-1.rds.amazonaws.com -P 3306 -u <db_user> -p
-   ```
+    ```bash
+    mysql -h mydb.xxxxx.us-east-1.rds.amazonaws.com -P 3306 -u <db_user> -p
+    ```
 
 3. **SSH 터널링 설정**:
-   ```bash
-   ssh -i aws-key.pem -L 3306:mydb.xxxxx.us-east-1.rds.amazonaws.com:3306 ec2-user@54.123.45.67
-   ```
+    ```bash
+    ssh -i aws-key.pem -L 3306:mydb.xxxxx.us-east-1.rds.amazonaws.com:3306 ec2-user@54.123.45.67
+    ```
 
 4. **로컬에서 데이터베이스 접속**:
-   ```bash
-   mysql -h 127.0.0.1 -P 3306 -u <db_user> -p
-   ```
+    ```bash
+    mysql -h 127.0.0.1 -P 3306 -u <db_user> -p
+    ```
 
 ---
 
