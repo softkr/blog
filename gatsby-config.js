@@ -64,15 +64,11 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        commonmark: true,
-        footnotes: true,
-        pedantic: true,
-        gfm: true,
         plugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 680,
+              maxWidth: 1024,
               loading: 'lazy',
               wrapperStyle: 'margin-bottom: 16px;',
               quality: 100,

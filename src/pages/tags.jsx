@@ -43,7 +43,7 @@ const TagsPage = ({ data }) => {
     }
 
     setFilteredPosts(
-      filter(posts, (post) => post.frontmatter.tags.indexOf(selected) !== -1),
+      filter(posts, (post) => post.frontmatter.tags && post.frontmatter.tags.indexOf(selected) !== -1),
     );
   }, [selected]);
 
