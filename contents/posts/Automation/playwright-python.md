@@ -4,8 +4,6 @@ description: 'Playwright를 Python에서 사용하는 방법에 대한 종합적
 tags:
   - Playwright
   - Python
-  - Web Automation
-  - Testing
 series: 'Web 자동화 도구 시리즈'
 date: 2024-12-09
 ---
@@ -13,6 +11,7 @@ date: 2024-12-09
 # Playwright Python 상세 가이드
 
 ## 목차
+
 1. [소개](#1-소개)
 2. [설치](#2-설치)
 3. [기본 사용법](#3-기본-사용법)

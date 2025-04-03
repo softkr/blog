@@ -4,7 +4,6 @@ description: 'Go 언어로 빌드된 바이너리 크기를 최적화하는 방�
 tags:
   - Go
   - Optimization
-  - Programming
 series: 'Go 최적화 시리즈'
 date: 2024-12-09
 ---
@@ -14,6 +13,7 @@ date: 2024-12-09
 ## 요약
 
 ### 기본 상태
+
 Go 언어로 "Hello World" 프로그램을 빌드하면 기본적으로 약 2MB 정도의 바이너리가 생성됩니다. 이는 Go 런타임, 가비지 컬렉터, 그리고 다양한 표준 라이브러리가 포함되어 있기 때문입니다.
 
 ## 최적화 방법
@@ -64,6 +64,7 @@ go build -gcflags="-l -B" -o app
 ## 실제 예제
 
 ### 1. 기본 빌드 크기
+
 ```bash
 go build -o app
 ls -lh app
@@ -71,6 +72,7 @@ ls -lh app
 ```
 
 ### 2. 최적화 후 크기
+
 ```bash
 go build -ldflags="-s -w" -o app_optimized
 upx --best app_optimized
@@ -81,10 +83,12 @@ ls -lh app_optimized
 ## 주의사항
 
 1. 디버깅 어려움
+
    - 최적화된 바이너리는 디버깅이 어려울 수 있음
    - 개발 환경에서는 최적화 옵션 사용을 피할 것
 
 2. 성능 영향
+
    - 일부 최적화는 실행 속도에 영향을 줄 수 있음
    - 프로파일링을 통한 성능 검증 필요
 
@@ -95,6 +99,7 @@ ls -lh app_optimized
 ## 추가 최적화 기법
 
 ### 1. TinyGo 사용
+
 ```bash
 # TinyGo 설치
 brew install tinygo  # macOS
@@ -105,11 +110,13 @@ tinygo build -o app_tiny
 ```
 
 ### 2. CGO 비활성화
+
 ```bash
 CGO_ENABLED=0 go build -o app
 ```
 
 ### 3. 특정 아키텍처 최적화
+
 ```bash
 GOARCH=amd64 GOOS=linux go build -o app_linux
 ```
@@ -118,4 +125,4 @@ GOARCH=amd64 GOOS=linux go build -o app_linux
 
 - [Go 컴파일러 최적화 가이드](https://golang.org/cmd/compile/)
 - [UPX 공식 문서](https://upx.github.io/)
-- [TinyGo 공식 문서](https://tinygo.org/) 
+- [TinyGo 공식 문서](https://tinygo.org/)

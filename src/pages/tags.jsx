@@ -43,7 +43,12 @@ const TagsPage = ({ data }) => {
     }
 
     setFilteredPosts(
-      filter(posts, (post) => post.frontmatter.tags && post.frontmatter.tags.indexOf(selected) !== -1),
+      filter(
+        posts,
+        (post) =>
+          post.frontmatter.tags &&
+          post.frontmatter.tags.indexOf(selected) !== -1,
+      ),
     );
   }, [selected]);
 
@@ -99,10 +104,10 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      sort: {frontmatter: {date: DESC}}
+      sort: { frontmatter: { date: DESC } }
       filter: { fileAbsolutePath: { regex: "/contents/posts/" } }
     ) {
-      group(field: {frontmatter: {tags: SELECT}}) {
+      group(field: { frontmatter: { tags: SELECT } }) {
         fieldValue
         totalCount
       }

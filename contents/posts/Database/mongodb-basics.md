@@ -4,7 +4,6 @@ description: 'MongoDB의 기본 개념과 사용법에 대해 알아봅니다'
 tags:
   - Database
   - MongoDB
-  - NoSQL
 series: 'MongoDB 시리즈'
 date: 2024-12-08
 ---
@@ -34,8 +33,8 @@ MongoDB의 기본 구조는 다음과 같습니다:
 
 이는 관계형 데이터베이스의 구조와 비교하면 다음과 같습니다:
 
-| RDBMS    | MongoDB     |
-|----------|------------|
+| RDBMS    | MongoDB    |
+| -------- | ---------- |
 | Database | Database   |
 | Table    | Collection |
 | Row      | Document   |
@@ -76,69 +75,63 @@ db.users.drop()
 ```javascript
 // 단일 문서 삽입
 db.users.insertOne({
-    name: "홍길동",
-    age: 30,
-    email: "hong@example.com"
-})
+  name: '홍길동',
+  age: 30,
+  email: 'hong@example.com',
+});
 
 // 다수 문서 삽입
 db.users.insertMany([
-    {
-        name: "김철수",
-        age: 25,
-        email: "kim@example.com"
-    },
-    {
-        name: "이영희",
-        age: 28,
-        email: "lee@example.com"
-    }
-])
+  {
+    name: '김철수',
+    age: 25,
+    email: 'kim@example.com',
+  },
+  {
+    name: '이영희',
+    age: 28,
+    email: 'lee@example.com',
+  },
+]);
 ```
 
 #### Read (조회)
 
 ```javascript
 // 모든 문서 조회
-db.users.find()
+db.users.find();
 
 // 조건부 조회
-db.users.find({ age: { $gt: 25 } })
+db.users.find({ age: { $gt: 25 } });
 
 // 특정 필드만 조회
-db.users.find({}, { name: 1, email: 1 })
+db.users.find({}, { name: 1, email: 1 });
 
 // 정렬
-db.users.find().sort({ age: -1 })
+db.users.find().sort({ age: -1 });
 
 // 제한
-db.users.find().limit(5)
+db.users.find().limit(5);
 ```
 
 #### Update (수정)
 
 ```javascript
 // 단일 문서 수정
-db.users.updateOne(
-    { name: "홍길동" },
-    { $set: { age: 31 } }
-)
+db.users.updateOne({ name: '홍길동' }, { $set: { age: 31 } });
 
 // 다수 문서 수정
-db.users.updateMany(
-    { age: { $lt: 30 } },
-    { $inc: { age: 1 } }
-)
+db.users.updateMany({ age: { $lt: 30 } }, { $inc: { age: 1 } });
 ```
 
 #### Delete (삭제)
 
 ```javascript
 // 단일 문서 삭제
-db.users.deleteOne({ name: "홍길동" })
+db.users.deleteOne({ name: '홍길동' });
 
 // 다수 문서 삭제
-db.users.deleteMany({ age: { $lt: 25 } })
+db.users.deleteMany({ age: { $lt: 25 } });
 ```
 
 ## 쿼리 연산자
@@ -158,10 +151,10 @@ MongoDB는 다양한 쿼리 연산자를 제공합니다.
 
 ```javascript
 // 나이가 25세 초과인 사용자 조회
-db.users.find({ age: { $gt: 25 } })
+db.users.find({ age: { $gt: 25 } });
 
 // 나이가 25세 이상 30세 이하인 사용자 조회
-db.users.find({ age: { $gte: 25, $lte: 30 } })
+db.users.find({ age: { $gte: 25, $lte: 30 } });
 ```
 
 ### 논리 연산자
@@ -174,19 +167,13 @@ db.users.find({ age: { $gte: 25, $lte: 30 } })
 ```javascript
 // AND 조건
 db.users.find({
-    $and: [
-        { age: { $gt: 25 } },
-        { name: "홍길동" }
-    ]
-})
+  $and: [{ age: { $gt: 25 } }, { name: '홍길동' }],
+});
 
 // OR 조건
 db.users.find({
-    $or: [
-        { age: { $lt: 25 } },
-        { age: { $gt: 30 } }
-    ]
-})
+  $or: [{ age: { $lt: 25 } }, { age: { $gt: 30 } }],
+});
 ```
 
 ## 인덱싱
@@ -195,16 +182,16 @@ db.users.find({
 
 ```javascript
 // 단일 필드 인덱스 생성
-db.users.createIndex({ email: 1 })
+db.users.createIndex({ email: 1 });
 
 // 복합 인덱스 생성
-db.users.createIndex({ name: 1, age: -1 })
+db.users.createIndex({ name: 1, age: -1 });
 
 // 인덱스 확인
-db.users.getIndexes()
+db.users.getIndexes();
 
 // 인덱스 삭제
-db.users.dropIndex({ email: 1 })
+db.users.dropIndex({ email: 1 });
 ```
 
 ## 실제 사용 예시
@@ -214,22 +201,22 @@ db.users.dropIndex({ email: 1 })
 ```javascript
 // 사용자 프로필 컬렉션
 db.profiles.insertOne({
-    userId: "user123",
-    name: "홍길동",
-    age: 30,
-    address: {
-        city: "서울",
-        street: "강남대로"
-    },
-    hobbies: ["독서", "등산"],
-    createdAt: new Date()
-})
+  userId: 'user123',
+  name: '홍길동',
+  age: 30,
+  address: {
+    city: '서울',
+    street: '강남대로',
+  },
+  hobbies: ['독서', '등산'],
+  createdAt: new Date(),
+});
 
 // 프로필 조회
 db.profiles.find({
-    "address.city": "서울",
-    hobbies: "독서"
-})
+  'address.city': '서울',
+  hobbies: '독서',
+});
 ```
 
 ### 게시물 관리
@@ -237,22 +224,22 @@ db.profiles.find({
 ```javascript
 // 게시물 생성
 db.posts.insertOne({
-    title: "첫 번째 게시물",
-    content: "내용입니다...",
-    author: "user123",
-    tags: ["mongodb", "database"],
-    comments: [
-        {
-            user: "user456",
-            text: "좋은 글이네요",
-            createdAt: new Date()
-        }
-    ],
-    createdAt: new Date()
-})
+  title: '첫 번째 게시물',
+  content: '내용입니다...',
+  author: 'user123',
+  tags: ['mongodb', 'database'],
+  comments: [
+    {
+      user: 'user456',
+      text: '좋은 글이네요',
+      createdAt: new Date(),
+    },
+  ],
+  createdAt: new Date(),
+});
 
 // 특정 태그를 가진 게시물 조회
-db.posts.find({ tags: "mongodb" })
+db.posts.find({ tags: 'mongodb' });
 ```
 
 ## 마치며

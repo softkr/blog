@@ -2,11 +2,8 @@
 title: 'Celery 개발 가이드'
 description: 'Python Celery를 활용한 비동기 작업 처리 구현 가이드'
 tags:
-  - Python
   - Celery
-  - AsyncIO
-  - Redis
-  - RabbitMQ
+  - Python
 date: 2024-12-13
 ---
 
@@ -219,14 +216,14 @@ def process_image(image_path, size):
         with Image.open(image_path) as img:
             # 이미지 리사이즈
             resized_img = img.resize(size)
-            
+
             # 저장 경로 생성
             filename = os.path.basename(image_path)
             new_path = f'processed_{filename}'
-            
+
             # 처리된 이미지 저장
             resized_img.save(new_path)
-            
+
             return {
                 'status': 'success',
                 'path': new_path
@@ -260,7 +257,7 @@ def send_email(to_addr, subject, body):
             server.starttls()
             server.login('user', 'password')
             server.send_message(msg)
-            
+
         return {'status': 'sent', 'to': to_addr}
     except Exception as e:
         return {'status': 'error', 'message': str(e)}
@@ -292,7 +289,7 @@ services:
   redis:
     image: redis:latest
     ports:
-      - "6379:6379"
+      - '6379:6379'
 
   celery_worker:
     build: .
@@ -337,17 +334,20 @@ def get_active_tasks():
 ## 성능 최적화
 
 1. **프리펫치 설정**
+
 ```python
 app.conf.worker_prefetch_multiplier = 1
 ```
 
 2. **작업자 풀 설정**
+
 ```python
 app.conf.worker_pool = 'prefork'
 app.conf.worker_concurrency = 4
 ```
 
 3. **결과 백엔드 최적화**
+
 ```python
 app.conf.result_expires = 3600  # 1시간
 app.conf.task_ignore_result = True  # 결과 저장 비활성화
@@ -356,6 +356,7 @@ app.conf.task_ignore_result = True  # 결과 저장 비활성화
 ## 보안 고려사항
 
 1. **메시지 서명**
+
 ```python
 app.conf.task_serializer = 'json'
 app.conf.accept_content = ['json']
@@ -363,6 +364,7 @@ app.conf.task_protocol = 2
 ```
 
 2. **SSL/TLS 설정**
+
 ```python
 app.conf.broker_use_ssl = {
     'keyfile': '/path/to/key.key',
@@ -377,6 +379,7 @@ app.conf.broker_use_ssl = {
 ### 일반적인 문제 해결
 
 1. **작업자 연결 실패**
+
 ```python
 # 브로커 연결 상태 확인
 from celery_app import app
@@ -384,6 +387,7 @@ app.control.ping()
 ```
 
 2. **메모리 누수**
+
 ```python
 # 메모리 사용량 모니터링
 from memory_profiler import profile
@@ -395,6 +399,7 @@ def memory_intensive_task():
 ```
 
 3. **데드락 방지**
+
 ```python
 app.conf.task_acks_late = True
 app.conf.task_reject_on_worker_lost = True

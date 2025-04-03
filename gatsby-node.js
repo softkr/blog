@@ -10,7 +10,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(`
     {
       postsRemark: allMarkdownRemark(
-        sort: {frontmatter: {date: ASC}}
+        sort: { frontmatter: { date: ASC } }
         filter: { fileAbsolutePath: { regex: "/contents/posts/" } }
         limit: 1000
       ) {
@@ -25,7 +25,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
       tagsGroup: allMarkdownRemark(limit: 2000) {
-        group(field: {frontmatter: {tags: SELECT}}) {
+        group(field: { frontmatter: { tags: SELECT } }) {
           fieldValue
         }
       }

@@ -4,8 +4,6 @@ description: 'Windows 환경에서 Python 가상 환경 활성화 실패 문제 
 tags:
   - Python
   - Windows
-  - venv
-  - Troubleshooting
 series: 'Python 환경 설정 시리즈'
 date: 2024-12-13
 ---
@@ -76,6 +74,7 @@ python -m venv venv
 ### 5. Visual Studio Code에서의 해결 방법
 
 1. VS Code 터미널 설정 변경:
+
    - `Ctrl + Shift + P` → "Terminal: Select Default Profile" 선택
    - "Command Prompt" 또는 "PowerShell" 선택
 
@@ -174,22 +173,25 @@ function activate-venv {
 ## 추가 팁
 
 1. **가상 환경 이름 표시 확인**
+
    ```powershell
    # 활성화 성공 시 프롬프트 앞에 (venv)가 표시됨
    (venv) PS C:\your-project>
    ```
 
 2. **Python 버전 확인**
+
    ```powershell
    python --version
    # 가상 환경의 Python 버전이 맞는지 확인
    ```
 
 3. **의존성 관리**
+
    ```powershell
    # 설치된 패키지 목록 저장
    pip freeze > requirements.txt
-   
+
    # 패키지 설치
    pip install -r requirements.txt
    ```

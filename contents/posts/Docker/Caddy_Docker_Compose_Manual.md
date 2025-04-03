@@ -2,9 +2,8 @@
 title: 'Caddy Docker Compose 사용'
 description: 'Docker Compose를 이용한 Caddy 웹서버 설정 및 사용법'
 tags:
-  - Server
-  - Caddy
   - Docker
+  - Caddy
 series: 'Caddy 시리즈'
 date: 2024-12-08
 ---
@@ -135,7 +134,7 @@ docker-compose up -d --force-recreate
 
 ### 6. HTTPS 설정 및 확인
 
-Caddy는 Let’s Encrypt를 통해 자동으로 HTTPS 인증서를 발급합니다.
+Caddy는 Let's Encrypt를 통해 자동으로 HTTPS 인증서를 발급합니다.
 
 1. **DNS 설정**
 

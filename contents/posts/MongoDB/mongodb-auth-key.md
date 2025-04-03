@@ -3,9 +3,7 @@ title: 'MongoDB Replica Set 인증키 설정 가이드'
 description: 'MongoDB Replica Set 구성 시 인증키 생성 및 권한 설정 방법'
 tags:
   - MongoDB
-  - ReplicaSet
   - Security
-  - Docker
 series: 'MongoDB 시리즈'
 date: 2024-12-13
 ---
@@ -19,6 +17,7 @@ MongoDB Replica Set 구성 시 멤버 간 보안 통신을 위해 인증키가 �
 ## 인증키 생성 및 설정 과정
 
 ### 1. 인증키 생성
+
 ```bash
 # 충분한 길이의 랜덤 키 생성
 openssl rand -base64 756 > mongo_key.sec
@@ -32,11 +31,13 @@ chmod 400 mongo_key.sec
 Docker 컨테이너에서 MongoDB를 실행할 때 키 파일 접근 권한으로 인한 오류가 자주 발생합니다.
 
 #### 일반적인 오류 메시지
+
 ```
 Error: KeyFile must have file permissions set to 400 (only owner may read)
 ```
 
 #### 해결 방법
+
 ```bash
 # MongoDB 시스템 사용자에게 키 파일 소유권 부여
 sudo chown systemd-coredump mongo_key.sec

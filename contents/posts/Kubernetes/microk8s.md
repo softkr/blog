@@ -4,8 +4,6 @@ description: 'MicroK8s의 기본 개념과 사용법에 대한 초보자를 위�
 tags:
   - Kubernetes
   - MicroK8s
-  - Container
-  - DevOps
 series: 'Kubernetes 학습 시리즈'
 date: 2024-12-09
 ---
@@ -19,11 +17,13 @@ MicroK8s는 가볍고 빠른 완전한 기능을 갖춘 단일 패키지 Kuberne
 ## 주요 특징
 
 1. **간편한 설치와 관리**
+
    - 단일 명령어로 설치 가능
    - 자동 업데이트 지원
    - 최소한의 설정으로 즉시 사용 가능
 
 2. **가벼운 리소스 사용**
+
    - 최소 시스템 요구사항이 낮음
    - 메모리 사용량 최적화
    - 빠른 시작 시간
@@ -36,18 +36,22 @@ MicroK8s는 가볍고 빠른 완전한 기능을 갖춘 단일 패키지 Kuberne
 ## 설치 방법
 
 ### Ubuntu에서 설치
+
 ```bash
 sudo snap install microk8s --classic
 ```
 
 ### Windows에서 설치
+
 1. Windows Subsystem for Linux (WSL) 설치
 2. Ubuntu WSL 내에서 MicroK8s 설치
+
 ```bash
 sudo snap install microk8s --classic
 ```
 
 ### macOS에서 설치
+
 ```bash
 brew install ubuntu/microk8s/microk8s
 ```
@@ -55,11 +59,13 @@ brew install ubuntu/microk8s/microk8s
 ## 기본 사용법
 
 ### 1. 상태 확인
+
 ```bash
 microk8s status
 ```
 
 ### 2. 애드온 활성화
+
 ```bash
 # DNS 활성화
 microk8s enable dns
@@ -72,6 +78,7 @@ microk8s enable storage
 ```
 
 ### 3. kubectl 사용
+
 ```bash
 # Pod 목록 조회
 microk8s kubectl get pods
@@ -86,22 +93,28 @@ microk8s kubectl create deployment nginx --image=nginx
 ## 주요 애드온 소개
 
 ### 1. Dashboard
+
 - Kubernetes 클러스터를 웹 인터페이스로 관리
 - 리소스 모니터링 및 관리 기능 제공
+
 ```bash
 microk8s enable dashboard
 ```
 
 ### 2. DNS
+
 - 클러스터 내부 도메인 이름 해결
 - 서비스 디스커버리 지원
+
 ```bash
 microk8s enable dns
 ```
 
 ### 3. Registry
+
 - 프라이빗 컨테이너 레지스트리
 - 로컬 이미지 저장 및 관리
+
 ```bash
 microk8s enable registry
 ```
@@ -109,18 +122,22 @@ microk8s enable registry
 ## 문제 해결 가이드
 
 ### 1. 일반적인 문제
+
 - **클러스터 상태 검사**
+
 ```bash
 microk8s inspect
 ```
 
 - **서비스 재시작**
+
 ```bash
 microk8s stop
 microk8s start
 ```
 
 ### 2. 로그 확인
+
 ```bash
 microk8s kubectl logs <pod-name>
 ```
@@ -128,11 +145,13 @@ microk8s kubectl logs <pod-name>
 ## 보안 설정
 
 ### 1. RBAC 활성화
+
 ```bash
 microk8s enable rbac
 ```
 
 ### 2. 인증서 관리
+
 ```bash
 microk8s refresh-certs
 ```
@@ -140,6 +159,7 @@ microk8s refresh-certs
 ## 성능 최적화 팁
 
 1. **리소스 제한 설정**
+
    - Pod에 적절한 리소스 제한 설정
    - 노드 리소스 모니터링
 
@@ -150,6 +170,7 @@ microk8s refresh-certs
 ## 프로덕션 환경 준비사항
 
 1. **고가용성 설정**
+
    - 다중 노드 구성
    - 백업 전략 수립
 

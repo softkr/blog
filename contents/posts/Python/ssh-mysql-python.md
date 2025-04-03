@@ -4,9 +4,6 @@ description: 'SSH Tunneling을 사용하여 Python에서 원격 MySQL 데이터�
 tags:
   - Python
   - MySQL
-  - SSH
-  - Database
-  - Security
 series: 'Python 데이터베이스 시리즈'
 date: 2024-12-13
 ---
@@ -53,7 +50,7 @@ try:
         password='mysql_password',
         database='database_name'
     )
-    
+
     with connection.cursor() as cursor:
         cursor.execute('SELECT version()')
         result = cursor.fetchone()
@@ -114,11 +111,11 @@ class DatabaseConnection:
                 ssh_username=self.ssh_config['user'],
                 ssh_pkey=self.ssh_config['key_path'],
                 remote_bind_address=(
-                    self.db_config['host'], 
+                    self.db_config['host'],
                     self.db_config['port']
                 )
             )
-            
+
             self.tunnel.start()
 
             # 데이터베이스 연결
@@ -252,19 +249,19 @@ def execute_query(connection_pool, query, params=None):
             with conn.cursor() as cursor:
                 cursor.execute(query, params or ())
                 return cursor.fetchall()
-                
+
     except OperationalError as e:
         logger.error(f"데이터베이스 연결 오류: {e}")
         raise
-        
+
     except PyMySQLError as e:
         logger.error(f"쿼리 실행 오류: {e}")
         raise
-        
+
     except BaseSSHTunnelForwarderError as e:
         logger.error(f"SSH Tunnel 오류: {e}")
         raise
-        
+
     except Exception as e:
         logger.error(f"예상치 못한 오류: {e}")
         raise
@@ -273,13 +270,17 @@ def execute_query(connection_pool, query, params=None):
 ## 보안 고려사항
 
 1. **SSH 키 관리**
+
    - 키 파일 권한 설정
+
    ```bash
    chmod 600 ~/.ssh/id_rsa
    ```
+
    - 키 파일 암호화 사용
 
 2. **환경 변수 활용**
+
    ```python
    import os
    from dotenv import load_dotenv
@@ -307,10 +308,12 @@ def execute_query(connection_pool, query, params=None):
 ## 성능 최적화 팁
 
 1. **연결 재사용**
+
    - 가능한 한 연결 풀 사용
    - 장기 실행 스크립트의 경우 연결 상태 모니터링
 
 2. **배치 처리**
+
    ```python
    def batch_insert(connection_pool, records, batch_size=1000):
        with connection_pool.get_connection() as conn:
@@ -326,6 +329,7 @@ def execute_query(connection_pool, query, params=None):
    ```
 
 3. **비동기 처리 구현**
+
    ```python
    import asyncio
    import aiomysql

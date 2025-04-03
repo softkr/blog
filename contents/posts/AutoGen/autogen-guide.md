@@ -4,8 +4,6 @@ description: 'Microsoft AutoGen 프레임워크의 기본 개념과 사용법에
 tags:
   - AutoGen
   - AI
-  - Python
-  - LLM
 series: 'AI 개발 시리즈'
 date: 2024-12-09
 ---
@@ -19,6 +17,7 @@ AutoGen은 Microsoft에서 개발한 차세대 AI 애플리케이션 개발 프�
 ## 왜 AutoGen을 사용해야 할까요?
 
 1. **효율적인 작업 처리**
+
    - 여러 AI가 협력하여 복잡한 문제 해결
    - 자동화된 코드 실행과 디버깅
    - 사용자 개입 최소화
@@ -31,11 +30,13 @@ AutoGen은 Microsoft에서 개발한 차세대 AI 애플리케이션 개발 프�
 ## 설치 방법
 
 ### 기본 설치
+
 ```bash
 pip install pyautogen
 ```
 
 ### 전체 기능 설치
+
 ```bash
 pip install "pyautogen[all]"
 ```
@@ -43,21 +44,25 @@ pip install "pyautogen[all]"
 ## 기본 개념
 
 ### 1. 에이전트(Agent)
+
 - AI 대화 참여자
 - 각각 특정 역할과 능력을 가짐
 - 예: 코더, 리뷰어, 제품 매니저 등
 
 ### 2. 대화(Conversation)
+
 - 에이전트들 간의 메시지 교환
 - 작업 목표를 달성하기 위한 협력 과정
 
 ### 3. 실행 환경(Execution Environment)
+
 - 코드 실행을 위한 안전한 환경
 - 결과를 대화에 반영
 
 ## 기본 사용법
 
 ### 1. 간단한 대화 설정
+
 ```python
 from autogen import AssistantAgent, UserProxyAgent
 
@@ -75,6 +80,7 @@ user_proxy.initiate_chat(
 ```
 
 ### 2. 다중 에이전트 설정
+
 ```python
 # 코더 에이전트
 coder = AssistantAgent(
@@ -95,6 +101,7 @@ manager = UserProxyAgent(name="manager")
 ## 주요 기능
 
 ### 1. 코드 실행
+
 ```python
 # 코드 실행이 가능한 에이전트 생성
 user_proxy = UserProxyAgent(
@@ -104,6 +111,7 @@ user_proxy = UserProxyAgent(
 ```
 
 ### 2. 대화 관리
+
 ```python
 # 대화 종료 조건 설정
 user_proxy.initiate_chat(
@@ -116,6 +124,7 @@ user_proxy.initiate_chat(
 ## 실전 예제
 
 ### 1. 간단한 데이터 분석
+
 ```python
 from autogen import AssistantAgent, UserProxyAgent
 
@@ -141,7 +150,9 @@ user.initiate_chat(
 ## 문제 해결 가이드
 
 ### 1. 일반적인 문제
+
 - **에이전트 응답 없음**
+
   - 타임아웃 설정 확인
   - 모델 API 키 확인
 
@@ -150,6 +161,7 @@ user.initiate_chat(
   - 필요한 라이브러리 설치
 
 ### 2. 성능 최적화
+
 - 적절한 모델 선택
 - 대화 턴 수 제한
 - 메모리 관리
@@ -157,11 +169,13 @@ user.initiate_chat(
 ## 모범 사례
 
 1. **에이전트 설계**
+
    - 명확한 역할 정의
    - 적절한 시스템 메시지 설정
    - 필요한 도구만 활성화
 
 2. **대화 관리**
+
    - 명확한 지시사항 제공
    - 적절한 종료 조건 설정
    - 오류 처리 구현
