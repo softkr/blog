@@ -2,7 +2,7 @@ module.exports = {
   title: 'The SoftKR Log',
   description:
     'Exploring innovative solutions in software development, AI, and cutting-edge technologies.',
-  author: 'John Roh',
+  author: 'Elijah Roh',
   siteUrl: 'https://softkr.dev',
   links: {
     github: 'https://github.com/softkr', // GitHub 계정 URL
