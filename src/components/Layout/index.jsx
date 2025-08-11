@@ -30,14 +30,16 @@ const Layout = ({ children }) => {
 
   const toggleTheme = () => {
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
-    dispatch(nextTheme === 'dark' ? setDark : setLight);
+    dispatch(nextTheme === 'dark' ? setDark() : setLight());
     localStorage.setItem('theme', nextTheme);
   };
 
   useEffect(() => {
-    if (isSystemDarkMode && !localTheme)
-      dispatch(isSystemDarkMode ? setDark : setLight);
-    else if (localTheme) dispatch(localTheme === 'dark' ? setDark : setLight);
+    if (isSystemDarkMode && !localTheme) {
+      dispatch(isSystemDarkMode ? setDark() : setLight());
+    } else if (localTheme) {
+      dispatch(localTheme === 'dark' ? setDark() : setLight());
+    }
   }, []);
 
   return (

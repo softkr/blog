@@ -5,32 +5,18 @@ import { graphql } from 'gatsby';
 import Layout from 'components/Layout';
 import Article from 'components/Article';
 
-import { siteUrl } from '../../blog-config';
-
 const Post = ({ data }) => {
-  const post = data.markdownRemark;
-  const { previous, next, seriesList } = data;
+  const { markdownRemark: post, previous, next, seriesList, site } = data;
+  const { siteUrl } = site.siteMetadata;
 
   const { title, date, update, tags, series } = post.frontmatter;
   const { excerpt } = post;
   const { readingTime, slug } = post.fields;
 
-  let filteredSeries = [];
-  if (series !== null) {
-    filteredSeries = seriesList.edges.map((seriesPost) => {
-      if (seriesPost.node.id === post.id) {
-        return {
-          ...seriesPost.node,
-          currentPost: true,
-        };
-      } else {
-        return {
-          ...seriesPost.node,
-          currentPost: false,
-        };
-      }
-    });
-  }
+  const filteredSeries = seriesList.edges.map((seriesPost) => ({
+    ...seriesPost.node,
+    currentPost: seriesPost.node.id === post.id,
+  }));
 
   return (
     <Layout>
@@ -65,6 +51,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     markdownRemark(id: { eq: $id }) {
