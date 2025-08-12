@@ -32,13 +32,13 @@ AutoGen은 Microsoft에서 개발한 차세대 AI 애플리케이션 개발 프�
 ### 기본 설치
 
 ```bash
-pip install pyautogen
+pip install ag2
 ```
 
 ### 전체 기능 설치
 
 ```bash
-pip install "pyautogen[all]"
+pip install "ag2[all]"
 ```
 
 ## 기본 개념
