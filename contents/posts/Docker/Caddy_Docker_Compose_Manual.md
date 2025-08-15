@@ -137,7 +137,6 @@ docker-compose up -d --force-recreate
 Caddy는 Let's Encrypt를 통해 자동으로 HTTPS 인증서를 발급합니다.
 
 1. **DNS 설정**
-
    - 도메인 네임의 DNS A/AAAA 레코드를 Caddy 서버의 IP 주소로 설정합니다.
 
 2. **HTTPS 확인**

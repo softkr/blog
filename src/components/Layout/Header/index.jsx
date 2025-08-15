@@ -25,7 +25,9 @@ const HeaderWrapper = styled.header`
   box-shadow: 0 0 8px ${(props) => props.theme.colors.headerShadow};
   backdrop-filter: blur(5px);
   opacity: ${(props) => (props.isHidden ? 0 : 1)};
-  transition: top 0.5s, opacity 0.5s;
+  transition:
+    top 0.5s,
+    opacity 0.5s;
   z-index: 999;
 
   @media (max-width: 768px) {
