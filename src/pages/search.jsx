@@ -23,17 +23,20 @@ const Search = ({ data }) => {
 
   const [query, setQuery] = useState('');
 
-  const filteredPosts = useMemo(() =>
-    posts.filter((post) => {
-      const { frontmatter, rawMarkdownBody } = post;
-      const { title } = frontmatter;
-      const lowerQuery = query.toLocaleLowerCase();
+  const filteredPosts = useMemo(
+    () =>
+      posts.filter((post) => {
+        const { frontmatter, rawMarkdownBody } = post;
+        const { title } = frontmatter;
+        const lowerQuery = query.toLocaleLowerCase();
 
-      if (rawMarkdownBody.toLocaleLowerCase().includes(lowerQuery)) return true;
+        if (rawMarkdownBody.toLocaleLowerCase().includes(lowerQuery))
+          return true;
 
-      return title.toLocaleLowerCase().includes(lowerQuery);
-    }),
-  [posts, query]);
+        return title.toLocaleLowerCase().includes(lowerQuery);
+      }),
+    [posts, query],
+  );
 
   return (
     <Layout>

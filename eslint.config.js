@@ -3,7 +3,7 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 
 export default [
   {
-    files: ['**/*.js', '**/*.jsx'],
+    files: ['src/**/*.js', 'src/**/*.jsx'],
     languageOptions: {
       parserOptions: {
         ecmaVersion: 'latest',
@@ -23,7 +23,13 @@ export default [
       },
     },
     rules: {
-      'no-unused-vars': 'warn',
+      'no-unused-vars': [
+        'warn',
+        {
+          varsIgnorePattern: '^(React|[A-Z])',
+          argsIgnorePattern: '^_',
+        },
+      ],
       'react/jsx-pascal-case': ['warn', { allowAllCaps: true }],
       eqeqeq: ['warn', 'always'],
       // React Hooks rules

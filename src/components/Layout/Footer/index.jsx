@@ -31,9 +31,7 @@ const Inner = styled.div`
 const Footer = () => {
   return (
     <FooterWrapper>
-      <Inner>
-        © {title} - Sharing insights on development and innovation.
-      </Inner>
+      <Inner>© {title} - Sharing insights on development and innovation.</Inner>
     </FooterWrapper>
   );
 };

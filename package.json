@@ -90,8 +90,8 @@
     "test": "jest",
     "deploy-gh": "gatsby build && gh-pages -d public",
     "deploy-gh-prefix-paths": "gatsby build --prefix-paths && gh-pages -d public",
-    "check:lint": "eslint .",
-    "fix:lint": "eslint . --fix",
+    "check:lint": "eslint src/",
+    "fix:lint": "eslint src/ --fix",
     "check:prettier": "prettier -c .",
     "fix:prettier": "prettier -c --write ."
   },

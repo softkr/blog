@@ -270,6 +270,7 @@ def execute_query(connection_pool, query, params=None):
 ## 보안 고려사항
 
 1. **SSH 키 관리**
+
    - 키 파일 권한 설정
 
    ```bash
@@ -307,6 +308,7 @@ def execute_query(connection_pool, query, params=None):
 ## 성능 최적화 팁
 
 1. **연결 재사용**
+
    - 가능한 한 연결 풀 사용
    - 장기 실행 스크립트의 경우 연결 상태 모니터링
 

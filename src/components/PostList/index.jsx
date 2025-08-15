@@ -19,9 +19,7 @@ const PostWrapper = styled.div`
   top: 0;
   padding: 12px 8px;
   border-radius: 8px;
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
     background-color 0.25s ease;
 
   &:hover {
