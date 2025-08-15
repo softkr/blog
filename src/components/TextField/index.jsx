@@ -21,16 +21,17 @@ const Input = styled.input.attrs({ type: 'text' })`
   padding: 14px 19.2px 12px 50px;
   width: 100%;
   border: 1px solid ${(props) => props.theme.colors.textFieldBorder};
-  border-radius: 1vh;
-  background-color: transparent;
+  border-radius: 10px;
+  background-color: ${(props) => props.theme.colors.background};
   font-size: 16px;
   color: ${(props) => props.theme.colors.text};
   box-sizing: border-box;
   outline: none;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 
   &:focus {
     border: 1px solid ${(props) => props.theme.colors.textFieldActivatedBorder};
+    box-shadow: 0 2px 12px ${(props) => props.theme.colors.headerShadow};
   }
 
   &:focus + ${Icon} {

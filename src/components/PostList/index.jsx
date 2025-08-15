@@ -17,7 +17,15 @@ const PostListWrapper = styled.div`
 const PostWrapper = styled.div`
   position: relative;
   top: 0;
-  transition: all 0.5s;
+  padding: 12px 8px;
+  border-radius: 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: ${(props) => props.theme.colors.background};
+    box-shadow: 0 2px 12px ${(props) => props.theme.colors.headerShadow};
+  }
 
   @media (max-width: 768px) {
     padding: 0 5px;

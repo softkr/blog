@@ -216,6 +216,8 @@ const StyledMarkdown = styled.div`
     margin-left: auto;
     margin-right: auto;
     max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px ${(props) => props.theme.colors.headerShadow};
   }
 
   & figcaption {

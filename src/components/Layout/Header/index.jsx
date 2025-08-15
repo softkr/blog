@@ -36,10 +36,13 @@ const HeaderWrapper = styled.header`
 const Inner = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 0 64px;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: 0 20px;
 
   @media (max-width: 768px) {
-    margin: 0 15px;
+    padding: 0 15px;
   }
 `;
 
