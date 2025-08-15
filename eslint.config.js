@@ -12,6 +12,9 @@ export default [
     },
     rules: {
       'no-unused-vars': 'warn',
+      'react/jsx-pascal-case': ['warn', { allowAllCaps: true }],
+      'eqeqeq': ['warn', 'always'],
+
     },
   },
 ];

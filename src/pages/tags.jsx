@@ -50,7 +50,7 @@ const TagsPage = ({ data }) => {
           post.frontmatter.tags.indexOf(selected) !== -1,
       ),
     );
-  }, [selected]);
+  }, [selected, posts]);
 
   useEffect(() => {
     const q = queryString.parse(query)['q'];

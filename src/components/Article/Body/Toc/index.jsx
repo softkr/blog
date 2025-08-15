@@ -98,7 +98,7 @@ const Toc = ({ items, articleOffset }) => {
         return;
       }
     });
-  }, [y]);
+  }, [y, headers]);
 
   const handleClickTitle = (item) => {
     window.location.hash = null;

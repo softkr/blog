@@ -69,12 +69,12 @@ const Tab = ({ postsCount, activeTab }) => {
   return (
     <TabWrapper>
       <Link to="/">
-        <TabButton active={activeTab == 'posts'}>
+        <TabButton active={activeTab === 'posts'}>
           POSTS <Badge>{postsCount}</Badge>
         </TabButton>
       </Link>
       <Link to="/about">
-        <TabButton active={activeTab == 'about'}>ABOUT</TabButton>
+        <TabButton active={activeTab === 'about'}>ABOUT</TabButton>
       </Link>
     </TabWrapper>
   );

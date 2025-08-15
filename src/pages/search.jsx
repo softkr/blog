@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 import SEO from 'components/SEO';
 import { graphql } from 'gatsby';
@@ -23,7 +23,7 @@ const Search = ({ data }) => {
 
   const [query, setQuery] = useState('');
 
-  const filteredPosts = useCallback(
+  const filteredPosts = useMemo(() =>
     posts.filter((post) => {
       const { frontmatter, rawMarkdownBody } = post;
       const { title } = frontmatter;
@@ -33,8 +33,7 @@ const Search = ({ data }) => {
 
       return title.toLocaleLowerCase().includes(lowerQuery);
     }),
-    [query],
-  );
+  [posts, query]);
 
   return (
     <Layout>

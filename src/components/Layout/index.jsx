@@ -35,12 +35,17 @@ const Layout = ({ children }) => {
   };
 
   useEffect(() => {
-    if (isSystemDarkMode && !localTheme) {
-      dispatch(isSystemDarkMode ? setDark() : setLight());
-    } else if (localTheme) {
-      dispatch(localTheme === 'dark' ? setDark() : setLight());
+    if (typeof window !== 'undefined') {
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const saved = typeof localStorage !== 'undefined' ? localStorage.getItem('theme') : null;
+
+      if (systemDark && !saved) {
+        dispatch(systemDark ? setDark() : setLight());
+      } else if (saved) {
+        dispatch(saved === 'dark' ? setDark() : setLight());
+      }
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <ThemeProvider theme={theme === 'light' ? light : dark}>

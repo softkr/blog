@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import _ from 'lodash';
 
@@ -53,11 +53,15 @@ const checkIsScrollAtBottom = () => {
 const SeriesList = ({ seriesList }) => {
   const [seriesCount, setSeriesCount] = useState(10);
 
-  const handleMoreLoad = _.throttle(() => {
-    if (checkIsScrollAtBottom() && seriesCount < seriesList.length) {
-      setTimeout(() => setSeriesCount(seriesCount + 10), 300);
-    }
-  }, 250);
+  const handleMoreLoad = useMemo(
+    () =>
+      _.throttle(() => {
+        if (checkIsScrollAtBottom() && seriesCount < seriesList.length) {
+          setTimeout(() => setSeriesCount(seriesCount + 10), 300);
+        }
+      }, 250),
+    [seriesCount, seriesList.length],
+  );
 
   useEffect(() => {
     window.addEventListener('scroll', handleMoreLoad);
@@ -65,7 +69,7 @@ const SeriesList = ({ seriesList }) => {
     return () => {
       window.removeEventListener('scroll', handleMoreLoad);
     };
-  }, [seriesCount, seriesList]);
+  }, [handleMoreLoad]);
 
   useEffect(() => {
     setSeriesCount(10);

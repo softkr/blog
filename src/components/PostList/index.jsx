@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import _ from 'lodash';
 
@@ -60,11 +60,15 @@ const checkIsScrollAtBottom = () => {
 const PostList = ({ postList }) => {
   const [postCount, setPostCount] = useState(10);
 
-  const handleMoreLoad = _.throttle(() => {
-    if (checkIsScrollAtBottom() && postCount < postList.length) {
-      setTimeout(() => setPostCount(postCount + 10), 300);
-    }
-  }, 250);
+  const handleMoreLoad = useMemo(
+    () =>
+      _.throttle(() => {
+        if (checkIsScrollAtBottom() && postCount < postList.length) {
+          setTimeout(() => setPostCount(postCount + 10), 300);
+        }
+      }, 250),
+    [postCount, postList.length],
+  );
 
   useEffect(() => {
     window.addEventListener('scroll', handleMoreLoad);
@@ -72,7 +76,7 @@ const PostList = ({ postList }) => {
     return () => {
       window.removeEventListener('scroll', handleMoreLoad);
     };
-  }, [postCount, postList]);
+  }, [handleMoreLoad]);
 
   useEffect(() => {
     setPostCount(10);

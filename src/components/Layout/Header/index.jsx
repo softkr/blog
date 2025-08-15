@@ -118,7 +118,7 @@ const Header = ({ toggleTheme }) => {
   const [scrollY, setScrollY] = useState();
   const [hidden, setHidden] = useState(false);
 
-  const detectScrollDirection = () => {
+  const detectScrollDirection = React.useCallback(() => {
     if (scrollY >= window.scrollY) {
       // scroll up
       setHidden(false);
@@ -128,7 +128,7 @@ const Header = ({ toggleTheme }) => {
     }
 
     setScrollY(window.scrollY);
-  };
+  }, [scrollY]);
 
   useEffect(() => {
     window.addEventListener('scroll', detectScrollDirection);
@@ -136,7 +136,7 @@ const Header = ({ toggleTheme }) => {
     return () => {
       window.removeEventListener('scroll', detectScrollDirection);
     };
-  }, [scrollY]);
+  }, [detectScrollDirection]);
 
   useEffect(() => {
     setScrollY(window.scrollY);
