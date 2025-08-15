@@ -2,42 +2,42 @@ name: CI
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
   pull_request:
-    branches:
-      - master
+    branches: [ master ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout the repository
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      # 2. Setup Node.js
-      - uses: actions/setup-node@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 22.12.0
+          node-version: '20'
+          cache: 'yarn'
 
-      # 3. Install node packages
-      - name: Install node packages
-        run: yarn
+      - name: Install dependencies
+        run: |
+          if [ -f yarn.lock ]; then
+            yarn install --frozen-lockfile
+          else
+            yarn install
+          fi
 
-      # 4. Check lint
-      - name: Check lint
+      - name: Lint
         run: yarn check:lint
 
-      # 5. Check prettier
-      - name: Check prettier
+      - name: Check Prettier
         run: yarn check:prettier
 
-      # 6. Build the project
       - name: Build
         run: yarn build
 
-      # 7. Deploy to the server
       - name: Deploy to server
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
@@ -45,8 +45,6 @@ jobs:
           echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H softkr.dev >> ~/.ssh/known_hosts
-          ls -la ./public  # 빌드 디렉토리 확인
-          # ssh ubuntu@softkr.dev "sudo rm -rf /softkr/blog/public"  # 서버 디렉토리 삭제
-          # ssh ubuntu@softkr.dev "sudo mkdir -p /softkr/blog/public"  # 서버 디렉토리 생성
+          ls -la ./public
           scp -r ./contents/ ubuntu@softkr.dev:/softkr/blog
           scp -r ./public/ ubuntu@softkr.dev:/softkr/blog

@@ -68,6 +68,9 @@ const SeriesList = ({ seriesList }) => {
 
     return () => {
       window.removeEventListener('scroll', handleMoreLoad);
+      if (handleMoreLoad && typeof handleMoreLoad.cancel === 'function') {
+        handleMoreLoad.cancel();
+      }
     };
   }, [handleMoreLoad]);
 
