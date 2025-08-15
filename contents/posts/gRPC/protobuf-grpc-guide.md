@@ -239,7 +239,6 @@ option go_package = "github.com/username/project/gen/service";
 ## 모범 사례
 
 1. **버전 관리**
-
    - Proto 파일의 버전을 명시적으로 관리
    - API 변경 시 하위 호환성 유지
 
@@ -277,13 +276,11 @@ option go_package = "github.com/username/project/gen/service";
 ## 배포 고려사항
 
 1. **버전 호환성**
-
    - 기존 필드 제거하지 않기
    - 새로운 필드는 선택적으로 추가
    - 필드 번호 재사용하지 않기
 
 2. **성능 최적화**
-
    - 메시지 크기 최소화
    - 적절한 필드 타입 선택
    - 불필요한 중첩 피하기
