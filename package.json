@@ -11,10 +11,8 @@
   },
   "dependencies": {
     "@giscus/react": "^3.1.0",
-    "babel-eslint": "^10.1.0",
     "babel-plugin-styled-components": "^2.1.4",
     "gatsby": "^5.14.6",
-    "gatsby-image": "^3.11.0",
     "gatsby-plugin-catch-links": "^5.14.0",
     "gatsby-plugin-feed": "^5.14.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
@@ -59,6 +57,8 @@
     "styled-reset": "^4.5.2"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
     "@testing-library/jest-dom": "^6.7.0",
     "@testing-library/react": "^16.3.0",
     "babel-jest": "^30.0.5",

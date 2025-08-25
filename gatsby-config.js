@@ -1,8 +1,9 @@
 const blogConfig = require('./blog-config');
 const { title, description, author, siteUrl } = blogConfig;
+const pathPrefix = process.env.GATSBY_PATH_PREFIX || '/gatsby-starter-hoodie';
 
 module.exports = {
-  pathPrefix: '/gatsby-starter-hoodie',
+  pathPrefix: pathPrefix,
   siteMetadata: {
     title,
     description,
@@ -71,7 +72,7 @@ module.exports = {
               maxWidth: 1024,
               loading: 'lazy',
               wrapperStyle: 'margin-bottom: 16px;',
-              quality: 100,
+              quality: 85,
               showCaptions: true,
             },
           },
