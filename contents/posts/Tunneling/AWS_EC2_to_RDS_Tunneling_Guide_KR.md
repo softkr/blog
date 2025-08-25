@@ -17,13 +17,11 @@ date: 2024-12-13
 ## 사전 준비
 
 1. **EC2 서버 정보**:
-
    - 공용 IP (예: `54.123.45.67`)
    - SSH 키 파일 (예: `aws-key.pem`)
    - 사용자 (`ec2-user`, `ubuntu` 등)
 
 2. **RDS 정보**:
-
    - 엔드포인트 (예: `mydb.xxxxx.us-east-1.rds.amazonaws.com`)
    - 포트 (`3306`은 MySQL, `5432`는 PostgreSQL)
    - 데이터베이스 사용자명 및 비밀번호

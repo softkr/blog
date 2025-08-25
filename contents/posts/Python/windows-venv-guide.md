@@ -74,7 +74,6 @@ python -m venv venv
 ### 5. Visual Studio Code에서의 해결 방법
 
 1. VS Code 터미널 설정 변경:
-
    - `Ctrl + Shift + P` → "Terminal: Select Default Profile" 선택
    - "Command Prompt" 또는 "PowerShell" 선택
 
